@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fuel Cost Calculator</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
+    />
+    <style>
+      body {
+        background-color: #0b0f16;
+        color: white;
+        margin: 0;
+        font-family: sans-serif;
+      }
+      nav {
+        max-width: 1200px;
+        margin: auto;
+        padding: 16px 24px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .logo {
+        color: #3ba9ff;
+        font-weight: 700;
+        text-decoration: none;
+      }
+      .nav-links a {
+        color: #3ba9ff;
+        margin-left: 20px;
+        text-decoration: none;
+        font-size: 14px;
+      }
+      .container {
+        max-width: 1000px;
+        margin: 40px auto;
+        padding: 0 24px;
+      }
+      input {
+        background-color: #11151c !important;
+        border: 1px solid #1f2937 !important;
+        color: white !important;
+        margin-bottom: 20px;
+      }
+      button {
+        background-color: #0e71a7 !important;
+        border: none !important;
+        width: 100%;
+        padding: 14px;
+        cursor: pointer;
+        color: white;
+        border-radius: 8px;
+      }
+      #resultDisplay {
+        margin-top: 20px;
+        color: #9ca3af;
+        font-size: 18px;
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <a href="index.html" class="logo">TripWise Tools</a>
+      <div class="nav-links">
+        <a href="avgspeed.html">Average Speed</a>
+        <a href="eta.html">ETA</a>
+        <a href="fule.html">Fuel Cost</a>
+        <a href="itinerary.html">Itinerary Cost</a>
+      </div>
+    </nav>
+
+    <div class="container">
+      <h1>Fuel Cost Calculator</h1>
+
+      <label for="dist">Distance (km):</label>
+      <input type="number" id="dist" placeholder="e.g. 100" />
+
+      <label for="eff">Fuel Efficiency (km/l):</label>
+      <input type="number" id="eff" placeholder="e.g. 20" />
+
+      <label for="price">Fuel Price (per litre):</label>
+      <input type="number" id="price" placeholder="e.g. 300" />
+
+      <button onclick="runCalc()">Calculate Cost</button>
+
+      <div id="resultDisplay">
+        Total Fuel Cost: <span style="color: white">₹</span
+        ><span id="output" style="color: white">0.00</span>
+      </div>
+    </div>
+
+    <script>
+      function runCalc() {
+        // Get values from the inputs
+        const d = parseFloat(document.getElementById("dist").value);
+        const e = parseFloat(document.getElementById("eff").value);
+        const p = parseFloat(document.getElementById("price").value);
+
+        // Debugging: This will show in your browser "Console" (F12)
+        console.log("Distance:", d, "Efficiency:", e, "Price:", p);
+
+        // Check if numbers are valid and greater than 0
+        if (d > 0 && e > 0 && p > 0) {
+          const total = (d / e) * p;
+
+          // Set the result text
+          document.getElementById("output").innerText = total.toFixed(2);
+
+          // Make the result container visible
+          document.getElementById("resultDisplay").style.display = "block";
+        } else {
+          alert("Please enter valid numbers greater than 0 in all fields.");
+        }
+      }
+    </script>
+  </body>
+</html>

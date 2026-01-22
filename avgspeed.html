@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Average Speed Calculator - TripWise</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
+    />
+    <style>
+      :root {
+        --primary-blue: #0e71a7; /* Matches the button color in your image */
+      }
+
+      body {
+        background-color: #0b0f16; /* Dark background */
+        color: #ffffff;
+        font-family: system-ui, -apple-system, sans-serif;
+        margin: 0;
+      }
+
+      /* NAVBAR STYLES */
+      nav {
+        max-width: 1200px;
+        margin: auto;
+        padding: 16px 24px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        color: #3ba9ff;
+        font-size: 18px;
+        font-weight: 700;
+        text-decoration: none;
+      }
+
+      .nav-links a {
+        color: #3ba9ff;
+        margin-left: 20px;
+        text-decoration: none;
+        font-size: 14px;
+      }
+
+      /* MAIN CONTENT STYLES */
+      .container {
+        max-width: 1000px;
+        margin: 40px auto;
+        padding: 0 24px;
+      }
+
+      h1 {
+        font-size: 32px;
+        font-weight: 700;
+        margin-bottom: 30px;
+        color: #ffffff;
+      }
+
+      .input-group {
+        margin-bottom: 20px;
+      }
+
+      label {
+        display: block;
+        font-size: 16px;
+        color: #ffffff;
+        margin-bottom: 8px;
+      }
+
+      input[type="number"] {
+        width: 100%;
+        background-color: #11151c !important; /* Very dark input */
+        border: 1px solid #1f2937 !important;
+        color: white !important;
+        padding: 12px;
+        border-radius: 6px;
+      }
+
+      button {
+        width: 100%;
+        background-color: var(--primary-blue) !important;
+        border: none !important;
+        padding: 14px;
+        font-size: 16px;
+        font-weight: 500;
+        margin-top: 10px;
+        cursor: pointer;
+      }
+
+      button:hover {
+        filter: brightness(1.1);
+      }
+
+      /* RESULT BOX */
+      .result-container {
+        margin-top: 30px;
+        padding: 20px;
+        background-color: #11151c;
+        border-radius: 8px;
+        border: 1px solid #1f2937;
+        display: none; /* Hidden by default */
+      }
+
+      .result-text {
+        color: #9ca3af;
+        font-size: 14px;
+        margin: 0;
+      }
+
+      .result-value {
+        font-size: 28px;
+        font-weight: 700;
+        color: #edf1f3;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- NAVBAR -->
+    <nav>
+      <a href="index.html" class="logo">TripWise Tools</a>
+      <div class="nav-links">
+        <a href="avgspeed.html" style="color: #3ba9ff">Average Speed</a>
+        <a href="eta.html">ETA</a>
+        <a href="fule.html">Fuel Cost</a>
+        <a href="itinerary.html">Itinerary Cost</a>
+      </div>
+    </nav>
+
+    <!-- MAIN CALCULATOR -->
+    <div class="container">
+      <h1>Average Speed Calculator</h1>
+
+      <div class="input-group">
+        <label for="distance">Distance (km):</label>
+        <input type="number" id="distance" placeholder="" required />
+      </div>
+
+      <div class="input-group">
+        <label for="time">Time (hours):</label>
+        <input type="number" id="time" placeholder="" step="0.1" required />
+      </div>
+
+      <button onclick="calculateSpeed()">Calculate Speed</button>
+
+      <!-- RESULT SECTION -->
+      <div id="resultBox" class="result-container">
+        <p class="result-text">Calculated Average Speed</p>
+        <span id="speedResult" class="result-value">0</span>
+        <span class="result-value"> km/h</span>
+      </div>
+    </div>
+
+    <script>
+      function calculateSpeed() {
+        const distance = document.getElementById("distance").value;
+        const time = document.getElementById("time").value;
+        const resultBox = document.getElementById("resultBox");
+        const speedResult = document.getElementById("speedResult");
+
+        if (distance > 0 && time > 0) {
+          const speed = distance / time;
+          speedResult.innerText = speed.toFixed(2);
+          resultBox.style.display = "block";
+        } else {
+          alert("Please enter valid numbers for distance and time.");
+        }
+      }
+    </script>
+  </body>
+</html>

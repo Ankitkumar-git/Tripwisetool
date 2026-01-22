@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>TripWise Tools</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body
+    style="
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: ;
+      color: #ffffff;
+      min-height: 100vh;
+    "
+  >
+    <!-- NAVBAR -->
+    <nav style="border-bottom: 1px solid #1f2937">
+      <div
+        style="
+          max-width: 1200px;
+          margin: auto;
+          padding: 16px 24px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        "
+      >
+        <!-- Update line 33 in index.html -->
+        <a
+          href="index.html"
+          style="
+            color: #eff0f2;
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+          "
+        >
+          TripWise Tools
+        </a>
+        <div style="font-size: 14px">
+          <a
+            href="avgspeed.html"
+            style="color: #3ba9ff; margin-left: 600px; text-decoration: none"
+            >Average Speed</a
+          >
+          <a
+            href="eta.html"
+            style="color: #3ba9ff; margin-left: 20px; text-decoration: none"
+            >ETA</a
+          >
+          <a
+            href="fule.html"
+            style="color: #3ba9ff; margin-left: 20px; text-decoration: none"
+            >Fule Cost</a
+          >
+          <a
+            href="itinerary.html"
+            style="color: #3ba9ff; margin-left: 20px; text-decoration: none"
+            >Itinerary Cost</a
+          >
+        </div>
+      </div>
+    </nav>
+
+    <!-- HERO -->
+    <section style="max: width 1000px; margin: auto; padding: 56px 24px 24px">
+      <h1
+        style="
+          font-size: 36px;
+          font-weight: 700;
+          margin-bottom: 12px;
+          color: #ffffff;
+        "
+      >
+        TripWise Tool
+      </h1>
+
+      <p style="color: #9ca3af; max-width: 1200px; line-height: 1.2">
+        A simple collection of travel utilities to calculate cost,time,speed
+        using basic maths.
+      </p>
+    </section>
+
+    <!-- DIVIDER -->
+    <div
+      style="
+        max-width: 1200px;
+        margin: 0 auto 32px;
+        border-top: 1px solid #1f2937;
+      "
+    ></div>
+    <!-- CARDS -->
+    <section
+      style="
+        max-width: 1200px;
+        margin: auto;
+        padding: 0 24px 48px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 24px;
+      "
+    >
+      <!-- CARD -->
+      <div
+        style="background-color: #0b0f16; padding: 18px; border-radius: 10px"
+      >
+        <h2 style="color: #ffffff">Average Speed Calculator</h2>
+        <p style="color: #9ca3af">
+          Calculate speed by dividing total distance by travel time.
+        </p>
+        <a href="avgspeed.html" style="color: #3ba9ff">Open Tool</a>
+      </div>
+
+      <div
+        style="background-color: #0b0f16; padding: 28px; border-radius: 16px"
+      >
+        <h2 style="color: #ffffff">ETA Calculator</h2>
+        <p style="color: #9ca3af">
+          Estimate your arriival time based on speed and distance.
+        </p>
+        <a href="eta.html" style="color: #3ba9ff">Open Tool</a>
+      </div>
+
+      <div
+        style="background-color: #0b0f16; padding: 18px; border-radius: 10px"
+      >
+        <h2 style="color: #ffffff">Fule Cost Calculator</h2>
+        <p style="color: #9ca3af">
+          Calculate total fule expense based on distance and fule price.
+        </p>
+        <a href="fule.html" style="color: #3ba9ff">Open Tool</a>
+      </div>
+
+      <div
+        style="background-color: #0b0f16; padding: 18px; border-radius: 10px"
+      >
+        <h2 style="color: #ffffff">Itinerary Cost Estimator</h2>
+        <p style="color: #9ca3af">
+          Get a total cost of your trip by summing multiple expenses.
+        </p>
+        <a href="itinerary.html" style="color: #3ba9ff">Open Tool</a>
+      </div>
+    </section>
+  </body>
+</html>

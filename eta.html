@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ETA Calculator - TripWise</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
+    />
+    <style>
+      :root {
+        --primary-blue: #0e71a7;
+      }
+
+      body {
+        background-color: #0b0f16;
+        color: #ffffff;
+        font-family: system-ui, -apple-system, sans-serif;
+        margin: 0;
+      }
+
+      /* NAVBAR */
+      nav {
+        max-width: 1200px;
+        margin: auto;
+        padding: 16px 24px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        color: #3ba9ff;
+        font-size: 18px;
+        font-weight: 700;
+        text-decoration: none;
+      }
+
+      .nav-links a {
+        color: #3ba9ff;
+        margin-left: 20px;
+        text-decoration: none;
+        font-size: 14px;
+      }
+
+      /* MAIN CONTENT */
+      .container {
+        max-width: 1000px;
+        margin: 40px auto;
+        padding: 0 24px;
+      }
+
+      h1 {
+        font-size: 32px;
+        font-weight: 700;
+        margin-bottom: 30px;
+        color: #ffffff;
+      }
+
+      .input-group {
+        margin-bottom: 20px;
+      }
+
+      label {
+        display: block;
+        font-size: 16px;
+        color: #ffffff;
+        margin-bottom: 8px;
+      }
+
+      input[type="number"] {
+        width: 100%;
+        background-color: #11151c !important;
+        border: 1px solid #1f2937 !important;
+        color: white !important;
+        padding: 12px;
+        border-radius: 6px;
+      }
+
+      button {
+        width: 100%;
+        background-color: var(--primary-blue) !important;
+        border: none !important;
+        padding: 14px;
+        font-size: 16px;
+        font-weight: 500;
+        margin-top: 10px;
+        cursor: pointer;
+      }
+
+      /* RESULT TEXT (Matches screenshot) */
+      #resultDisplay {
+        margin-top: 20px;
+        color: #9ca3af;
+        font-size: 16px;
+        display: none; /* Hidden until calculated */
+      }
+    </style>
+  </head>
+  <body>
+    <!-- NAVBAR -->
+    <nav>
+      <a href="index.html" class="logo">TripWise Tools</a>
+      <div class="nav-links">
+        <a href="avgspeed.html">Average Speed</a>
+        <a href="eta.html" style="color: #3ba9ff; font-weight: bold">ETA</a>
+        <a href="fule.html">Fuel Cost</a>
+        <a href="itinerary.html">Itinerary Cost</a>
+      </div>
+    </nav>
+
+    <!-- MAIN CALCULATOR -->
+    <div class="container">
+      <h1>ETA Calculator</h1>
+
+      <div class="input-group">
+        <label for="distance">Distance (km):</label>
+        <input type="number" id="distance" placeholder="e.g. 100" required />
+      </div>
+
+      <div class="input-group">
+        <label for="speed">Speed (km/h):</label>
+        <input type="number" id="speed" placeholder="e.g. 10" required />
+      </div>
+
+      <button onclick="calculateETA()">Calculate ETA</button>
+
+      <!-- RESULT SECTION -->
+      <div id="resultDisplay">
+        Estimated Time of Arrival:
+        <span id="etaValue" style="color: #9ca3af">0.00</span> hours
+      </div>
+    </div>
+
+    <script>
+      function calculateETA() {
+        const distance = document.getElementById("distance").value;
+        const speed = document.getElementById("speed").value;
+        const resultDiv = document.getElementById("resultDisplay");
+        const etaValue = document.getElementById("etaValue");
+
+        if (distance > 0 && speed > 0) {
+          // Formula: ETA = Distance / Speed
+          const eta = distance / speed;
+          etaValue.innerText = eta.toFixed(2);
+          resultDiv.style.display = "block";
+        } else {
+          alert("Please enter values greater than zero.");
+        }
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Itinerary Cost Estimator - TripWise</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
+    />
+    <style>
+      :root {
+        --primary-blue: #0e71a7;
+      }
+
+      body {
+        background-color: #0b0f16;
+        color: #ffffff;
+        font-family: system-ui, -apple-system, sans-serif;
+        margin: 0;
+      }
+
+      /* NAVBAR */
+      nav {
+        max-width: 1200px;
+        margin: auto;
+        padding: 16px 24px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        color: #3ba9ff;
+        font-size: 18px;
+        font-weight: 700;
+        text-decoration: none;
+      }
+
+      .nav-links a {
+        color: #3ba9ff;
+        margin-left: 20px;
+        text-decoration: none;
+        font-size: 14px;
+      }
+
+      /* MAIN CONTENT */
+      .container {
+        max-width: 1000px;
+        margin: 40px auto;
+        padding: 0 24px;
+      }
+
+      h1 {
+        font-size: 32px;
+        font-weight: 700;
+        margin-bottom: 30px;
+        color: #ffffff;
+      }
+
+      .input-group {
+        margin-bottom: 20px;
+      }
+
+      label {
+        display: block;
+        font-size: 16px;
+        color: #ffffff;
+        margin-bottom: 8px;
+      }
+
+      input[type="number"],
+      select {
+        width: 100%;
+        background-color: #11151c !important;
+        border: 1px solid #1f2937 !important;
+        color: white !important;
+        padding: 12px;
+        border-radius: 6px;
+      }
+
+      /* Style for the dropdown options */
+      select option {
+        background-color: #11151c;
+        color: white;
+      }
+
+      button {
+        width: 100%;
+        background-color: var(--primary-blue) !important;
+        border: none !important;
+        padding: 14px;
+        font-size: 16px;
+        font-weight: 500;
+        margin-top: 10px;
+        cursor: pointer;
+        color: white;
+      }
+
+      /* RESULT SECTION */
+      #resultDisplay {
+        margin-top: 20px;
+        color: #9ca3af;
+        font-size: 18px;
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- NAVBAR -->
+    <nav>
+      <a href="index.html" class="logo">TripWise Tools</a>
+      <div class="nav-links">
+        <a href="avgspeed.html">Average Speed</a>
+        <a href="eta.html">ETA</a>
+        <a href="fule.html">Fuel Cost</a>
+        <a href="itinerary.html" style="color: #3ba9ff; font-weight: bold"
+          >Itinerary Cost</a
+        >
+      </div>
+    </nav>
+
+    <!-- MAIN CALCULATOR -->
+    <div class="container">
+      <h1>Itinerary Cost Estimator</h1>
+
+      <div class="input-group">
+        <label for="transport">Transport Cost:</label>
+        <input type="number" id="transport" placeholder="e.g. 500" />
+      </div>
+
+      <div class="input-group">
+        <label for="hotelType">Hotel Type:</label>
+        <select id="hotelType">
+          <option value="1000">Budget (₹1000/night)</option>
+          <option value="2500">Standard (₹2500/night)</option>
+          <option value="5000">Luxury (₹5000/night)</option>
+        </select>
+      </div>
+
+      <div class="input-group">
+        <label for="food">Food Cost:</label>
+        <input type="number" id="food" placeholder="e.g. 300" />
+      </div>
+
+      <div class="input-group">
+        <label for="activities">Activities Cost:</label>
+        <input type="number" id="activities" placeholder="e.g. 200" />
+      </div>
+
+      <button onclick="calculateTotal()">Calculate Total</button>
+
+      <!-- RESULT SECTION -->
+      <div id="resultDisplay">
+        Estimated Total Trip Cost: <span style="color: white">₹</span
+        ><span id="totalValue" style="color: white">0.00</span>
+      </div>
+    </div>
+
+    <script>
+      function calculateTotal() {
+        // Get values from inputs (default to 0 if empty)
+        const transport =
+          parseFloat(document.getElementById("transport").value) || 0;
+        const hotelPrice = parseFloat(
+          document.getElementById("hotelType").value
+        );
+        const food = parseFloat(document.getElementById("food").value) || 0;
+        const activities =
+          parseFloat(document.getElementById("activities").value) || 0;
+
+        // Sum logic
+        const totalCost = transport + hotelPrice + food + activities;
+
+        // Display result
+        document.getElementById("totalValue").innerText = totalCost.toFixed(2);
+        document.getElementById("resultDisplay").style.display = "block";
+      }
+    </script>
+  </body>
+</html>
